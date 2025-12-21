@@ -15,12 +15,14 @@ Route::view('/kontak', 'frontend.kontak')->name('frontend.kontak');
 Route::view('/bantuan', 'frontend.bantuan')->name('frontend.bantuan');
 Route::view('/tentang', 'frontend.tentang')->name('frontend.tentang');
 
-// AUTH (Blade + JWT via API)
-Route::get('/login', fn () => view('auth.login'))->name('login');
-Route::get('/register', fn () => view('auth.register'))->name('register');
+// DETAIL PRODUK (NIKE STYLE)
+Route::get('/produk/{id}', function ($id) {
+    return view('frontend.product-detail');
+});
 
-// DASHBOARD (protected by token di frontend)
-Route::get('/dashboard', fn () => view('dashboard.index'))->name('dashboard');
+// AUTH
+Route::view('/login', 'auth.login')->name('login');
+Route::view('/register', 'auth.register')->name('register');
 
-// OPTIONAL
-Route::view('/welcome', 'welcome')->name('welcome');
+// DASHBOARD
+Route::view('/dashboard', 'dashboard.index')->name('dashboard');

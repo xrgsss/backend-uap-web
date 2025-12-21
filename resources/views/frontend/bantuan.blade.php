@@ -1,37 +1,33 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bantuan | Persela Store</title>
-  <link rel="stylesheet" href="{{ asset('style.css') }}">
-</head>
-<body>
-  <header class="navbar">
-    <div class="logo">Persela Store</div>
-    <nav>
-      <a href="{{ route('frontend.home') }}" class="{{ request()->routeIs('frontend.home') ? 'active' : '' }}">Beranda</a>
-      <a href="{{ route('frontend.produk') }}" class="{{ request()->routeIs('frontend.produk') ? 'active' : '' }}">Produk</a>
-      <a href="{{ route('frontend.cart') }}" class="{{ request()->routeIs('frontend.cart') ? 'active' : '' }}">Keranjang</a>
-      <a href="{{ route('frontend.kontak') }}" class="{{ request()->routeIs('frontend.kontak') ? 'active' : '' }}">Kontak</a>
-      <a href="{{ route('frontend.bantuan') }}" class="{{ request()->routeIs('frontend.bantuan') ? 'active' : '' }}">Bantuan</a>
-      <a href="{{ route('frontend.tentang') }}" class="{{ request()->routeIs('frontend.tentang') ? 'active' : '' }}">Tentang</a>
-    </nav>
-  </header>
+@extends('layouts.app')
 
-  <section class="bantuan-section">
-    <h1>Pusat Bantuan</h1>
-    <p>Berikut beberapa pertanyaan yang sering ditanyakan:</p>
-    <ul class="faq-list">
-      <li><strong>Apakah jersey ini original?</strong><br>Ya, semua produk yang dijual di Persela Store adalah produk resmi.</li>
-      <li><strong>Bagaimana cara pemesanan?</strong><br>Anda bisa memilih jersey di halaman Produk, lalu menambahkannya ke Keranjang.</li>
-      <li><strong>Apakah tersedia pengiriman ke luar kota?</strong><br>Ya, kami melayani pengiriman ke seluruh Indonesia.</li>
-      <li><strong>Apakah bisa COD?</strong><br>Ya, kami mendukung metode pembayaran COD di area tertentu.</li>
-    </ul>
-  </section>
+@section('title', 'Bantuan')
 
-  <footer>
-    <p>(c) 2025 Persela Store. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+@section('content')
+<section class="max-w-5xl mx-auto px-8 py-20">
+    <h1 class="text-4xl font-bold mb-8">
+        Pusat <span class="text-sky-400">Bantuan</span>
+    </h1>
+
+    <div class="space-y-6 text-white/80">
+        <div>
+            <h3 class="font-semibold text-lg">Apakah jersey ini original?</h3>
+            <p>Ya, semua produk adalah merchandise resmi Persela Lamongan.</p>
+        </div>
+
+        <div>
+            <h3 class="font-semibold text-lg">Bagaimana cara pemesanan?</h3>
+            <p>Pilih produk → Tambah ke Keranjang → Checkout.</p>
+        </div>
+
+        <div>
+            <h3 class="font-semibold text-lg">Apakah melayani luar kota?</h3>
+            <p>Kami melayani pengiriman ke seluruh Indonesia.</p>
+        </div>
+
+        <div>
+            <h3 class="font-semibold text-lg">Apakah tersedia COD?</h3>
+            <p>COD tersedia untuk area tertentu.</p>
+        </div>
+    </div>
+</section>
+@endsection

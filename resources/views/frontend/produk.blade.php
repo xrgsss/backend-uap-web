@@ -1,32 +1,28 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Persela Store | Produk</title>
-  <link rel="stylesheet" href="{{ asset('style.css') }}">
-  <script src="{{ asset('script.js') }}" defer></script>
-</head>
-<body>
-  <header class="navbar">
-    <div class="logo">Persela Store</div>
-    <nav>
-      <a href="{{ route('frontend.home') }}" class="{{ request()->routeIs('frontend.home') ? 'active' : '' }}">Beranda</a>
-      <a href="{{ route('frontend.produk') }}" class="{{ request()->routeIs('frontend.produk') ? 'active' : '' }}">Produk</a>
-      <a href="{{ route('frontend.cart') }}" class="{{ request()->routeIs('frontend.cart') ? 'active' : '' }}">Keranjang</a>
-      <a href="{{ route('frontend.kontak') }}" class="{{ request()->routeIs('frontend.kontak') ? 'active' : '' }}">Kontak</a>
-      <a href="{{ route('frontend.bantuan') }}" class="{{ request()->routeIs('frontend.bantuan') ? 'active' : '' }}">Bantuan</a>
-      <a href="{{ route('frontend.tentang') }}" class="{{ request()->routeIs('frontend.tentang') ? 'active' : '' }}">Tentang</a>
-    </nav>
-  </header>
+@extends('layouts.app')
+@section('title','Produk')
 
-  <section class="produk-section">
-    <h2>Koleksi Jersey Persela Lamongan</h2>
-    <div id="produk-container" class="produk-container"></div>
-  </section>
+@section('content')
+<h1 class="text-3xl font-bold mb-10">Koleksi Jersey</h1>
 
-  <footer>
-    <p>(c) 2025 Persela Store. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+<div class="grid md:grid-cols-3 gap-8" id="produk"></div>
+@endsection
+
+@push('scripts')
+<script src="/products.js"></script>
+<script>
+const el = document.getElementById('produk');
+
+PRODUCTS.forEach(p => {
+  el.innerHTML += `
+    <div class="bg-white/5 p-5 rounded-xl">
+      <img src="${p.image}" class="rounded-lg mb-4">
+      <h3 class="font-semibold">${p.name}</h3>
+      <p class="text-cyan-400">Rp ${p.price.toLocaleString()}</p>
+      <a href="/produk/${p.id}" class="block mt-4 bg-cyan-500 py-2 text-center rounded-lg">
+        Detail Produk
+      </a>
+    </div>
+  `;
+});
+</script>
+@endpush

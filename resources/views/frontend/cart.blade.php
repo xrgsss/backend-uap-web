@@ -1,32 +1,27 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Persela Store | Keranjang</title>
-  <link rel="stylesheet" href="{{ asset('style.css') }}">
-  <script src="{{ asset('script.js') }}" defer></script>
-</head>
-<body>
-  <header class="navbar">
-    <div class="logo">Persela Store</div>
-    <nav>
-      <a href="{{ route('frontend.home') }}" class="{{ request()->routeIs('frontend.home') ? 'active' : '' }}">Beranda</a>
-      <a href="{{ route('frontend.produk') }}" class="{{ request()->routeIs('frontend.produk') ? 'active' : '' }}">Produk</a>
-      <a href="{{ route('frontend.cart') }}" class="{{ request()->routeIs('frontend.cart') ? 'active' : '' }}">Keranjang</a>
-      <a href="{{ route('frontend.kontak') }}" class="{{ request()->routeIs('frontend.kontak') ? 'active' : '' }}">Kontak</a>
-      <a href="{{ route('frontend.bantuan') }}" class="{{ request()->routeIs('frontend.bantuan') ? 'active' : '' }}">Bantuan</a>
-      <a href="{{ route('frontend.tentang') }}" class="{{ request()->routeIs('frontend.tentang') ? 'active' : '' }}">Tentang</a>
-    </nav>
-  </header>
+@extends('layouts.app')
+@section('title','Keranjang')
 
-  <section class="keranjang-section">
-    <h2>Keranjang Anda</h2>
-    <div id="cart-container" class="cart-container"></div>
-  </section>
+@section('content')
+<h1 class="text-3xl font-bold mb-8">Keranjang</h1>
+<div id="cart"></div>
+@endsection
 
-  <footer>
-    <p>(c) 2025 Persela Store. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+@push('scripts')
+<script>
+const cart = JSON.parse(localStorage.getItem('cart')) || [];
+const el = document.getElementById('cart');
+let total = 0;
+
+cart.forEach(p => {
+  total += p.price * p.qty;
+  el.innerHTML += `
+    <div class="flex justify-between bg-white/5 p-4 rounded-lg mb-3">
+      <span>${p.name} (x${p.qty})</span>
+      <span>Rp ${(p.price*p.qty).toLocaleString()}</span>
+    </div>
+  `;
+});
+
+el.innerHTML += `<p class="mt-6 text-xl">Total: <b>Rp ${total.toLocaleString()}</b></p>`;
+</script>
+@endpush

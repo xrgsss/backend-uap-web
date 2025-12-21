@@ -1,33 +1,15 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Persela Store | Kontak</title>
-  <link rel="stylesheet" href="{{ asset('style.css') }}">
-</head>
-<body>
-  <header class="navbar">
-    <div class="logo">Persela Store</div>
-    <nav>
-      <a href="{{ route('frontend.home') }}" class="{{ request()->routeIs('frontend.home') ? 'active' : '' }}">Beranda</a>
-      <a href="{{ route('frontend.produk') }}" class="{{ request()->routeIs('frontend.produk') ? 'active' : '' }}">Produk</a>
-      <a href="{{ route('frontend.cart') }}" class="{{ request()->routeIs('frontend.cart') ? 'active' : '' }}">Keranjang</a>
-      <a href="{{ route('frontend.kontak') }}" class="{{ request()->routeIs('frontend.kontak') ? 'active' : '' }}">Kontak</a>
-      <a href="{{ route('frontend.bantuan') }}" class="{{ request()->routeIs('frontend.bantuan') ? 'active' : '' }}">Bantuan</a>
-      <a href="{{ route('frontend.tentang') }}" class="{{ request()->routeIs('frontend.tentang') ? 'active' : '' }}">Tentang</a>
-    </nav>
-  </header>
+@extends('layouts.app')
 
-  <section class="kontak-section">
-    <h2>Hubungi Kami</h2>
-    <p>Email: <a href="mailto:info@perselastore.com">info@perselastore.com</a></p>
-    <p>Instagram: <a href="#">@perselastore</a></p>
-    <p>Alamat Toko: Stadion Surajaya, Lamongan, Jawa Timur</p>
-  </section>
+@section('title', 'Kontak')
 
-  <footer>
-    <p>(c) 2025 Persela Store. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+@section('content')
+<section class="max-w-5xl mx-auto px-8 py-20">
+    <h1 class="text-4xl font-bold mb-6">Kontak Kami</h1>
+
+    <div class="text-white/70 space-y-3">
+        <p>Email: <span class="text-sky-400">info@perselastore.com</span></p>
+        <p>Instagram: <span class="text-sky-400">@perselastore</span></p>
+        <p>Alamat: Stadion Surajaya, Lamongan</p>
+    </div>
+</section>
+@endsection
