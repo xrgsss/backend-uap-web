@@ -22,7 +22,7 @@
 
     <!-- TABLE -->
     <table class="w-full border">
-        <thead class="bg-gray-200">
+        <thead class="bg-blue-600">
             <tr>
                 <th class="border p-2">Nama</th>
                 <th class="border p-2">Kategori</th>

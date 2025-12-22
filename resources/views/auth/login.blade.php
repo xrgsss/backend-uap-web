@@ -24,22 +24,26 @@
 
 <script>
 function login() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
     fetch('/api/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
-        body: JSON.stringify({
-            email: document.getElementById('email').value,
-            password: document.getElementById('password').value
-        })
+        body: JSON.stringify({ email, password })
     })
     .then(res => res.json())
     .then(data => {
         if (data.access_token) {
+            // ✅ PENTING
             localStorage.setItem('token', data.access_token);
-            window.location.href = '/dashboard';
+            localStorage.setItem('isLogin', 'true');
+            localStorage.setItem('userEmail', email);
+
+            window.location.href = '/checkout';
         } else {
             document.getElementById('error').innerText =
                 data.message ?? 'Login gagal';
